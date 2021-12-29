@@ -17,6 +17,25 @@
 		F20EB14B277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20EB14A277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentTests.m */; };
 		F20EB155277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20EB154277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITests.m */; };
 		F20EB157277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20EB156277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITestsLaunchTests.m */; };
+		F20EB16A277A687C001DB926 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20EB169277A687C001DB926 /* GoogleMapsBase.framework */; };
+		F20EB16C277A6887001DB926 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20EB16B277A6887001DB926 /* GoogleMaps.framework */; };
+		F20EB16E277A6894001DB926 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20EB16D277A6894001DB926 /* GoogleMapsCore.framework */; };
+		F2FD10D8277CD2F60038DEC9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10D7277CD2F60038DEC9 /* Accelerate.framework */; };
+		F2FD10DA277CD3010038DEC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10D9277CD3010038DEC9 /* CoreData.framework */; };
+		F2FD10DC277CD30B0038DEC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10DB277CD30B0038DEC9 /* CoreGraphics.framework */; };
+		F2FD10DE277CD3170038DEC9 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10DD277CD3170038DEC9 /* CoreImage.framework */; };
+		F2FD10E0277CD3200038DEC9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10DF277CD3200038DEC9 /* CoreLocation.framework */; };
+		F2FD10E2277CD3270038DEC9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10E1277CD3270038DEC9 /* CoreTelephony.framework */; };
+		F2FD10E4277CD32D0038DEC9 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10E3277CD32D0038DEC9 /* CoreText.framework */; };
+		F2FD10E6277CD3340038DEC9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10E5277CD3340038DEC9 /* GLKit.framework */; };
+		F2FD10E8277CD33A0038DEC9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10E7277CD33A0038DEC9 /* ImageIO.framework */; };
+		F2FD10EA277CD3440038DEC9 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10E9277CD3430038DEC9 /* libc++.tbd */; };
+		F2FD10EC277CD34B0038DEC9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10EB277CD34B0038DEC9 /* libz.tbd */; };
+		F2FD10EE277CD3500038DEC9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10ED277CD3500038DEC9 /* Metal.framework */; };
+		F2FD10F0277CD35A0038DEC9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10EF277CD35A0038DEC9 /* OpenGLES.framework */; };
+		F2FD10F2277CD3640038DEC9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10F1277CD3640038DEC9 /* QuartzCore.framework */; };
+		F2FD10F4277CD36C0038DEC9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10F3277CD36C0038DEC9 /* SystemConfiguration.framework */; };
+		F2FD10F6277CD3710038DEC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FD10F5277CD3710038DEC9 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +73,25 @@
 		F20EB150277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClinicalInc_MobileTechAssessmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F20EB154277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClinicalInc_MobileTechAssessmentUITests.m; sourceTree = "<group>"; };
 		F20EB156277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClinicalInc_MobileTechAssessmentUITestsLaunchTests.m; sourceTree = "<group>"; };
+		F20EB169277A687C001DB926 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
+		F20EB16B277A6887001DB926 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		F20EB16D277A6894001DB926 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
+		F2FD10D7277CD2F60038DEC9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		F2FD10D9277CD3010038DEC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F2FD10DB277CD30B0038DEC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F2FD10DD277CD3170038DEC9 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		F2FD10DF277CD3200038DEC9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F2FD10E1277CD3270038DEC9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		F2FD10E3277CD32D0038DEC9 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		F2FD10E5277CD3340038DEC9 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		F2FD10E7277CD33A0038DEC9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		F2FD10E9277CD3430038DEC9 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		F2FD10EB277CD34B0038DEC9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		F2FD10ED277CD3500038DEC9 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		F2FD10EF277CD35A0038DEC9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F2FD10F1277CD3640038DEC9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F2FD10F3277CD36C0038DEC9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F2FD10F5277CD3710038DEC9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +99,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F20EB16C277A6887001DB926 /* GoogleMaps.framework in Frameworks */,
+				F20EB16E277A6894001DB926 /* GoogleMapsCore.framework in Frameworks */,
+				F20EB16A277A687C001DB926 /* GoogleMapsBase.framework in Frameworks */,
+				F2FD10D8277CD2F60038DEC9 /* Accelerate.framework in Frameworks */,
+				F2FD10DA277CD3010038DEC9 /* CoreData.framework in Frameworks */,
+				F2FD10DE277CD3170038DEC9 /* CoreImage.framework in Frameworks */,
+				F2FD10E0277CD3200038DEC9 /* CoreLocation.framework in Frameworks */,
+				F2FD10DC277CD30B0038DEC9 /* CoreGraphics.framework in Frameworks */,
+				F2FD10E2277CD3270038DEC9 /* CoreTelephony.framework in Frameworks */,
+				F2FD10E4277CD32D0038DEC9 /* CoreText.framework in Frameworks */,
+				F2FD10E6277CD3340038DEC9 /* GLKit.framework in Frameworks */,
+				F2FD10E8277CD33A0038DEC9 /* ImageIO.framework in Frameworks */,
+				F2FD10EA277CD3440038DEC9 /* libc++.tbd in Frameworks */,
+				F2FD10EC277CD34B0038DEC9 /* libz.tbd in Frameworks */,
+				F2FD10EE277CD3500038DEC9 /* Metal.framework in Frameworks */,
+				F2FD10F0277CD35A0038DEC9 /* OpenGLES.framework in Frameworks */,
+				F2FD10F2277CD3640038DEC9 /* QuartzCore.framework in Frameworks */,
+				F2FD10F4277CD36C0038DEC9 /* SystemConfiguration.framework in Frameworks */,
+				F2FD10F6277CD3710038DEC9 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +145,7 @@
 				F20EB149277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentTests */,
 				F20EB153277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITests */,
 				F20EB12C277A37CF001DB926 /* Products */,
+				F2FD10D6277CD2F60038DEC9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +162,9 @@
 		F20EB12D277A37CF001DB926 /* ClinicalInc_MobileTechAssessment */ = {
 			isa = PBXGroup;
 			children = (
+				F20EB16D277A6894001DB926 /* GoogleMapsCore.framework */,
+				F20EB16B277A6887001DB926 /* GoogleMaps.framework */,
+				F20EB169277A687C001DB926 /* GoogleMapsBase.framework */,
 				F20EB12E277A37CF001DB926 /* AppDelegate.h */,
 				F20EB12F277A37CF001DB926 /* AppDelegate.m */,
 				F20EB131277A37CF001DB926 /* SceneDelegate.h */,
@@ -134,6 +195,29 @@
 				F20EB156277A37D1001DB926 /* ClinicalInc_MobileTechAssessmentUITestsLaunchTests.m */,
 			);
 			path = ClinicalInc_MobileTechAssessmentUITests;
+			sourceTree = "<group>";
+		};
+		F2FD10D6277CD2F60038DEC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2FD10F5277CD3710038DEC9 /* UIKit.framework */,
+				F2FD10F3277CD36C0038DEC9 /* SystemConfiguration.framework */,
+				F2FD10F1277CD3640038DEC9 /* QuartzCore.framework */,
+				F2FD10EF277CD35A0038DEC9 /* OpenGLES.framework */,
+				F2FD10ED277CD3500038DEC9 /* Metal.framework */,
+				F2FD10EB277CD34B0038DEC9 /* libz.tbd */,
+				F2FD10E9277CD3430038DEC9 /* libc++.tbd */,
+				F2FD10E7277CD33A0038DEC9 /* ImageIO.framework */,
+				F2FD10E5277CD3340038DEC9 /* GLKit.framework */,
+				F2FD10E3277CD32D0038DEC9 /* CoreText.framework */,
+				F2FD10E1277CD3270038DEC9 /* CoreTelephony.framework */,
+				F2FD10DF277CD3200038DEC9 /* CoreLocation.framework */,
+				F2FD10DD277CD3170038DEC9 /* CoreImage.framework */,
+				F2FD10DB277CD30B0038DEC9 /* CoreGraphics.framework */,
+				F2FD10D9277CD3010038DEC9 /* CoreData.framework */,
+				F2FD10D7277CD2F60038DEC9 /* Accelerate.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +464,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -432,6 +517,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -445,6 +531,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BY785MSY79;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ClinicalInc_MobileTechAssessment",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ClinicalInc_MobileTechAssessment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -473,6 +563,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BY785MSY79;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ClinicalInc_MobileTechAssessment",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ClinicalInc_MobileTechAssessment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
