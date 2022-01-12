@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   // Do any additional setup after loading the view.
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    [locationManager requestWhenInUseAuthorization];
   // Create a GMSCameraPosition that tells the map to display the
   // coordinate -33.86,151.20 at zoom level 6.
   GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
