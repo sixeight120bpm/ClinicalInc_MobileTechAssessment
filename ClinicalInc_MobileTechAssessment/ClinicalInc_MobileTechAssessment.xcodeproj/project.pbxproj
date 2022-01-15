@@ -22,6 +22,7 @@
 		F20EB16E277A6894001DB926 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20EB16D277A6894001DB926 /* GoogleMapsCore.framework */; };
 		F2388CAD2793804400D31892 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2388CAC2793804400D31892 /* MapViewController.m */; };
 		F2388CAF2793823800D31892 /* CurrentLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F2388CAE2793823800D31892 /* CurrentLocation.gpx */; };
+		F2388CB1279385F000D31892 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2388CB0279385F000D31892 /* MapView.xib */; };
 		F2A14F3F279330CD003A448B /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A14F3E279330CC003A448B /* PlacesViewController.m */; };
 		F2A14F4227934F4C003A448B /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A14F4127934F4C003A448B /* GooglePlaces.framework */; };
 		F2A14F4427934F87003A448B /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F2A14F4327934F87003A448B /* GooglePlaces.bundle */; };
@@ -85,6 +86,7 @@
 		F2388CAB2793802D00D31892 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F2388CAC2793804400D31892 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		F2388CAE2793823800D31892 /* CurrentLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CurrentLocation.gpx; sourceTree = "<group>"; };
+		F2388CB0279385F000D31892 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		F2A14F3E279330CC003A448B /* PlacesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
 		F2A14F40279330FF003A448B /* PlacesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
 		F2A14F4127934F4C003A448B /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				F2388CAB2793802D00D31892 /* MapViewController.h */,
 				F2388CAC2793804400D31892 /* MapViewController.m */,
 				F2388CAE2793823800D31892 /* CurrentLocation.gpx */,
+				F2388CB0279385F000D31892 /* MapView.xib */,
 			);
 			path = ClinicalInc_MobileTechAssessment;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				F2FD10F8277CD8E30038DEC9 /* GoogleMaps.bundle in Resources */,
 				F2388CAF2793823800D31892 /* CurrentLocation.gpx in Resources */,
 				F2A14F4427934F87003A448B /* GooglePlaces.bundle in Resources */,
+				F2388CB1279385F000D31892 /* MapView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
