@@ -7,8 +7,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MapInfo.h"
 
 @interface MapViewController : UIViewController <CLLocationManagerDelegate>
-
+@property (weak, nonatomic) MapInfo *mapInfo;
 
 @end

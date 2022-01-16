@@ -63,6 +63,7 @@
   mapView.hidden = YES;
 
   [self listLikelyPlaces];
+    
 }
 
 // Populate the array with the list of likely places.
