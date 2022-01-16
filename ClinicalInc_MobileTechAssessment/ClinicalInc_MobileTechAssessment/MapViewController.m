@@ -5,6 +5,7 @@
 //  Created by user206074 on 1/15/22.
 //
 
+#import "ViewController.h"
 #import "MapViewController.h"
 #import "PlacesViewController.h"
 @import CoreLocation;
@@ -16,6 +17,7 @@
 @end
 
 @implementation MapViewController {
+    ViewController *viewController;
   CLLocationManager *locationManager;
   CLLocation * _Nullable currentLocation;
   GMSMapView *mapView;
@@ -32,6 +34,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+    
   preciseLocationZoomLevel = 15.0;
   approximateLocationZoomLevel = 15.0;
 
@@ -87,7 +91,7 @@
     
     for (GMSPlaceLikelihood *likelihood in likelihoods) {
       GMSPlace *place = likelihood.place;
-      [likelyPlaces addObject:place];
+        [self->likelyPlaces addObject:place];
     }
   }];
 }
@@ -104,7 +108,10 @@
     marker.title = selectedPlace.name;
     marker.snippet = selectedPlace.formattedAddress;
     marker.map = mapView;
-  }
+      ViewController *viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+      viewController.locationName = selectedPlace.name;
+      viewController.locationCoords = [NSString stringWithFormat:@"Current location (%f, %f)",selectedPlace.coordinate.longitude, selectedPlace.coordinate.latitude];
+      NSLog(@"==> %@ IS %@", viewController.locationName, viewController.locationCoords);  }
 
   [self listLikelyPlaces];
 }
@@ -137,6 +144,7 @@
   if (mapView.isHidden) {
     mapView.hidden = NO;
     mapView.camera = camera;
+      
   } else {
     [mapView animateToCameraPosition:camera];
   }
@@ -178,7 +186,7 @@
 // Handle location manager errors.
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-  [manager stopUpdatingLocation];
+  //[manager stopUpdatingLocation];
   NSLog(@"Error: %@", error.localizedDescription);
 }
 

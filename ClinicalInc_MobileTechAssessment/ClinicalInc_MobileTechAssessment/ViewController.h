@@ -9,7 +9,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MapInfo.h"
 @interface ViewController : UIViewController <CLLocationManagerDelegate> 
-@property (weak, nonatomic) IBOutlet MapInfo *mapInfo;
+@property (nonatomic, assign) NSString *locationName;
+@property (nonatomic, assign) NSString *locationCoords;
 
 @end
 

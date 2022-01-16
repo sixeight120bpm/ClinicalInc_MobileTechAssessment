@@ -8,6 +8,8 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *LocationCoordsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *LocationNameLabel;
 
 @end
 

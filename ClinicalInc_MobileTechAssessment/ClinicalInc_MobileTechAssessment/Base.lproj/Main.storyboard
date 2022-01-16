@@ -33,10 +33,30 @@
                                     <constraint firstAttribute="bottom" secondItem="8iu-Yz-XLA" secondAttribute="bottom" constant="-12" id="enc-RF-tPM"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g52-4D-JHs">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGU-WN-wKQ">
+                                <rect key="frame" x="0.0" y="90" width="414" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="g52-4D-JHs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1Fj-bd-bxK"/>
+                            <constraint firstItem="DGU-WN-wKQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="2V1-7z-PWr"/>
+                            <constraint firstItem="4sC-qP-pMu" firstAttribute="top" secondItem="DGU-WN-wKQ" secondAttribute="bottom" constant="19" id="6dV-kC-zwE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="g52-4D-JHs" secondAttribute="bottom" constant="768" id="88i-FK-XYY"/>
+                            <constraint firstItem="g52-4D-JHs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Ns-Qo-CMs"/>
+                            <constraint firstItem="DGU-WN-wKQ" firstAttribute="trailing" secondItem="g52-4D-JHs" secondAttribute="trailing" id="Cec-3t-iGd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g52-4D-JHs" secondAttribute="trailing" id="Cx6-gp-MWj"/>
+                            <constraint firstItem="DGU-WN-wKQ" firstAttribute="leading" secondItem="g52-4D-JHs" secondAttribute="leading" id="HQn-TB-o1d"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4sC-qP-pMu" secondAttribute="trailing" id="ICm-hm-x5c"/>
                             <constraint firstItem="4sC-qP-pMu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KYw-Wo-fh0"/>
                             <constraint firstItem="4sC-qP-pMu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="115" id="hHs-YP-UKL"/>
@@ -45,6 +65,11 @@
                             <constraint firstItem="4sC-qP-pMu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="115" id="w2J-V4-ZWT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="LocationCoordsLabel" destination="g52-4D-JHs" id="gII-3F-hsp"/>
+                        <outlet property="LocationNameLabel" destination="DGU-WN-wKQ" id="xpH-8J-ZcW"/>
+                        <outlet property="view" destination="g52-4D-JHs" id="QP1-DI-O4T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,6 +82,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ju3-XC-HZ4">
                         <rect key="frame" x="0.0" y="0.0" width="526" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="BCB-Ni-Hdu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
