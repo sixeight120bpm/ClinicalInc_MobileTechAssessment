@@ -191,6 +191,7 @@
 				F20EB13C277A37D1001DB926 /* LaunchScreen.storyboard */,
 				F20EB13F277A37D1001DB926 /* Info.plist */,
 				F20EB140277A37D1001DB926 /* main.m */,
+				F2388CA62793757E00D31892 /* CurrentLocation.gpx */,
 				F2A14F3E279330CC003A448B /* PlacesViewController.m */,
 				F2A14F40279330FF003A448B /* PlacesViewController.h */,
 				F2388CAE2793823800D31892 /* CurrentLocation.gpx */,
@@ -341,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2388CA72793757E00D31892 /* CurrentLocation.gpx in Resources */,
 				F20EB13E277A37D1001DB926 /* LaunchScreen.storyboard in Resources */,
 				F20EB13B277A37D1001DB926 /* Assets.xcassets in Resources */,
 				F20EB139277A37CF001DB926 /* Main.storyboard in Resources */,
