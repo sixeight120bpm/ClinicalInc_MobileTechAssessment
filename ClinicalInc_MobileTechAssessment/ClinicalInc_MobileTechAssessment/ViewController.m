@@ -101,6 +101,11 @@
         GMSPlace *place = likelihood.place;
           [self->likelyPlaces addObject:place];
       }
+        if (self->selectedPlace == nil) {
+            self->selectedPlace = self->likelyPlaces.firstObject;
+            NSLog(@"%@", self->selectedPlace);
+            [self.LocationNameLabel setText:self->selectedPlace.name];
+        }
     }];
   }
 
@@ -145,7 +150,14 @@
     GMSCameraPosition * camera = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
                                                              longitude:location.coordinate.longitude
                                                                   zoom:zoomLevel];
+      
+      
+      
+
+      
       [self.LocationCoordLabel setText:[NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:location.coordinate.latitude], [NSNumber numberWithFloat:location.coordinate.longitude]]];
+      
+     
       
     if (self.MapView.isHidden) {
 
@@ -155,7 +167,7 @@
       [self.MapView animateToCameraPosition:camera];
     }
 
-    [self listLikelyPlaces];
+      [self listLikelyPlaces];
   }
 
   // Handle authorization for the location manager.
