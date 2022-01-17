@@ -23,10 +23,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLs-T6-GXd" userLabel="MapViewContainer" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="119" width="414" height="744"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="635"/>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g52-4D-JHs" userLabel="LocationCoordsLabel">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,15 +36,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DGU-WN-wKQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="2V1-7z-PWr"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="YLs-T6-GXd" secondAttribute="bottom" constant="-1" id="313-Ai-kMc"/>
+                            <constraint firstItem="YLs-T6-GXd" firstAttribute="leading" secondItem="DGU-WN-wKQ" secondAttribute="leading" id="E2O-Yg-hBH"/>
                             <constraint firstItem="g52-4D-JHs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GUa-aj-Gpa"/>
                             <constraint firstItem="g52-4D-JHs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ip0-yG-8m3"/>
-                            <constraint firstItem="YLs-T6-GXd" firstAttribute="top" secondItem="g52-4D-JHs" secondAttribute="bottom" constant="25" id="KR0-mO-SKP"/>
-                            <constraint firstItem="YLs-T6-GXd" firstAttribute="top" secondItem="DGU-WN-wKQ" secondAttribute="bottom" constant="8.5" id="NR9-kr-8T7"/>
                             <constraint firstItem="g52-4D-JHs" firstAttribute="trailing" secondItem="DGU-WN-wKQ" secondAttribute="trailing" id="eNs-58-xXt"/>
+                            <constraint firstItem="YLs-T6-GXd" firstAttribute="trailing" secondItem="DGU-WN-wKQ" secondAttribute="trailing" id="gDx-au-88f"/>
                             <constraint firstItem="g52-4D-JHs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hMs-0c-VRV"/>
-                            <constraint firstItem="YLs-T6-GXd" firstAttribute="trailing" secondItem="DGU-WN-wKQ" secondAttribute="trailing" id="oCX-AT-ffp"/>
-                            <constraint firstItem="YLs-T6-GXd" firstAttribute="leading" secondItem="DGU-WN-wKQ" secondAttribute="leading" id="w4B-iV-4FQ"/>
+                            <constraint firstItem="YLs-T6-GXd" firstAttribute="top" secondItem="DGU-WN-wKQ" secondAttribute="bottom" constant="8.5" id="j96-75-ezG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YLs-T6-GXd" secondAttribute="bottom" constant="108" id="tkR-Ts-KUg"/>
                             <constraint firstItem="g52-4D-JHs" firstAttribute="leading" secondItem="DGU-WN-wKQ" secondAttribute="leading" id="zNg-Ye-n0y"/>
                         </constraints>
                     </view>

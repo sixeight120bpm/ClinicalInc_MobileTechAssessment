@@ -6,9 +6,9 @@
 //
 
 #import "ViewController.h"
-#import "PlacesViewController.h"
+//#import "PlacesViewController.h"
 @import CoreLocation;
-@import GooglePlaces;
+//@import GooglePlaces;
 @import GoogleMaps;
 
 @interface ViewController () <CLLocationManagerDelegate>
@@ -21,15 +21,15 @@
 @implementation ViewController {
     CLLocationManager *locationManager;
     CLLocation * _Nullable currentLocation;
-    GMSPlacesClient *placesClient;
+//    GMSPlacesClient *placesClient;
     float preciseLocationZoomLevel;
     float approximateLocationZoomLevel;
     
     // An array to hold the list of likely places.
-    NSMutableArray<GMSPlace *> *likelyPlaces;
+//    NSMutableArray<GMSPlace *> *likelyPlaces;
 
     // The currently selected place.
-    GMSPlace * _Nullable selectedPlace;
+//    GMSPlace * _Nullable selectedPlace;
   }
 
   - (void)viewDidLoad {
@@ -47,7 +47,7 @@
     [locationManager startUpdatingLocation];
     locationManager.delegate = self;
 
-    placesClient = [GMSPlacesClient sharedClient];
+  //  placesClient = [GMSPlacesClient sharedClient];
 
     // A default location to use when location permission is not granted.
     CLLocationCoordinate2D defaultLocation = CLLocationCoordinate2DMake(-33.869405, 151.199);
@@ -76,69 +76,64 @@
       
       self.MapView.hidden = YES;
 
-    [self listLikelyPlaces];
+//    [self listLikelyPlaces];
   }
 
   // Populate the array with the list of likely places.
-  - (void) listLikelyPlaces
-  {
-    // Clean up from previous sessions.
-    likelyPlaces = [NSMutableArray array];
-
-    GMSPlaceField placeFields = GMSPlaceFieldName | GMSPlaceFieldCoordinate;
-    [placesClient findPlaceLikelihoodsFromCurrentLocationWithPlaceFields:placeFields callback:^(NSArray<GMSPlaceLikelihood *> * _Nullable likelihoods, NSError * _Nullable error) {
-      if (error != nil) {
-        // TODO: Handle the error.
-        NSLog(@"Current Place error: %@", error.localizedDescription);
-        return;
-      }
-      
-      if (likelihoods == nil) {
-        NSLog(@"No places found.");
-        return;
-      }
-      
-      for (GMSPlaceLikelihood *likelihood in likelihoods) {
-        GMSPlace *place = likelihood.place;
-          [self->likelyPlaces addObject:place];
-      }
-        if (self->selectedPlace == nil) {
-            self->selectedPlace = self->likelyPlaces.firstObject;
-            NSLog(@"%@", self->selectedPlace);
-            [self.LocationNameLabel setText:self->selectedPlace.name];
-        }
-    }];
-  }
+//  - (void) listLikelyPlaces
+//  {
+//    // Clean up from previous sessions.
+//    likelyPlaces = [NSMutableArray array];
+//
+//    GMSPlaceField placeFields = GMSPlaceFieldName | GMSPlaceFieldCoordinate;
+//    [placesClient findPlaceLikelihoodsFromCurrentLocationWithPlaceFields:placeFields callback:^(NSArray<GMSPlaceLikelihood *> * _Nullable likelihoods, NSError * _Nullable error) {
+//      if (error != nil) {
+//        // TODO: Handle the error.
+//        NSLog(@"Current Place error: %@", error.localizedDescription);
+//        return;
+//      }
+//
+//      if (likelihoods == nil) {
+//        NSLog(@"No places found.");
+//        return;
+//      }
+//
+//      for (GMSPlaceLikelihood *likelihood in likelihoods) {
+//        GMSPlace *place = likelihood.place;
+//          [self->likelyPlaces addObject:place];
+//      }
+//    }];
+//  }
 
   // Update the map once the user has made their selection.
-  - (void) unwindToMain:(UIStoryboardSegue *)segue
-  {
-    // Clear the map.
-    [self.MapView clear];
-
-    // Add a marker to the map.
-    if (selectedPlace != nil) {
-      GMSMarker *marker = [GMSMarker markerWithPosition:selectedPlace.coordinate];
-      marker.title = selectedPlace.name;
-      marker.snippet = selectedPlace.formattedAddress;
-      marker.map = self.MapView;
-        [self.LocationNameLabel setText:selectedPlace.name];
-        [self.LocationCoordLabel setText:[NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:marker.position.latitude], [NSNumber numberWithFloat:marker.position.longitude]]];
-    }
-
-    [self listLikelyPlaces];
-  }
+//  - (void) unwindToMain:(UIStoryboardSegue *)segue
+//  {
+//    // Clear the map.
+//    [self.MapView clear];
+//
+//    // Add a marker to the map.
+//    if (selectedPlace != nil) {
+//      GMSMarker *marker = [GMSMarker markerWithPosition:selectedPlace.coordinate];
+//      marker.title = selectedPlace.name;
+//      marker.snippet = selectedPlace.formattedAddress;
+//      marker.map = self.MapView;
+//        [self.LocationNameLabel setText:selectedPlace.name];
+//        [self.LocationCoordLabel setText:[NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:marker.position.latitude], [NSNumber numberWithFloat:marker.position.longitude]]];
+//    }
+//
+//    [self listLikelyPlaces];
+//  }
 
   // Prepare the segue.
-  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-  {
-    if ([segue.identifier isEqualToString:@"segueToSelect"]) {
-      if ([segue.destinationViewController isKindOfClass:[PlacesViewController class]]) {
-        PlacesViewController *placesViewController = (PlacesViewController *)segue.destinationViewController;
-        placesViewController.likelyPlaces = likelyPlaces;
-      }
-    }
-  }
+//  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//  {
+//    if ([segue.identifier isEqualToString:@"segueToSelect"]) {
+//      if ([segue.destinationViewController isKindOfClass:[PlacesViewController class]]) {
+//        PlacesViewController *placesViewController = (PlacesViewController *)segue.destinationViewController;
+//        placesViewController.likelyPlaces = likelyPlaces;
+//      }
+//    }
+//  }
 
   // Delegates to handle events for the location manager.
   #pragma mark - CLLocationManagerDelegate
@@ -165,7 +160,7 @@
       [self.MapView animateToCameraPosition:camera];
     }
 
-      [self listLikelyPlaces];
+//      [self listLikelyPlaces];
   }
 
   // Handle authorization for the location manager.

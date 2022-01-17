@@ -16,31 +16,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="I6f-xm-007">
-                                <rect key="frame" x="20" y="44" width="374" height="818"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClinicalIncLogo" translatesAutoresizingMaskIntoConstraints="NO" id="eEe-d4-lqe">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="272.5"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DALogo" translatesAutoresizingMaskIntoConstraints="NO" id="Uaq-3W-WQ3">
-                                        <rect key="frame" x="0.0" y="272.5" width="374" height="273"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Technical Assessment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxl-Ro-n6Q">
-                                        <rect key="frame" x="75" y="545.5" width="224" height="272.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="DALogo" translatesAutoresizingMaskIntoConstraints="NO" id="Uaq-3W-WQ3">
+                                <rect key="frame" x="20" y="328" width="374" height="241"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mobile Technical Assessment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxl-Ro-n6Q">
+                                <rect key="frame" x="95" y="576" width="224" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClinicalIncLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bye-A0-Ht1">
+                                <rect key="frame" x="10" y="219" width="394" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="GN3-Yh-WLo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="I6f-xm-007" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FKs-vm-bf4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="I6f-xm-007" secondAttribute="bottom" id="Zc0-73-EFL"/>
-                            <constraint firstItem="I6f-xm-007" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jay-Jg-5nx"/>
-                            <constraint firstItem="I6f-xm-007" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="187:448" id="xdL-02-iwG"/>
+                            <constraint firstItem="Uaq-3W-WQ3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="284" id="F6g-ZC-C6n"/>
+                            <constraint firstItem="Uaq-3W-WQ3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="HaC-Ru-ql4"/>
+                            <constraint firstItem="Nxl-Ro-n6Q" firstAttribute="top" secondItem="Uaq-3W-WQ3" secondAttribute="bottom" constant="7" id="YTf-Wk-ey9"/>
+                            <constraint firstItem="bye-A0-Ht1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="kaW-5Y-eKJ"/>
+                            <constraint firstItem="bye-A0-Ht1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="175" id="mIE-6U-P0X"/>
+                            <constraint firstItem="Uaq-3W-WQ3" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="usy-N0-TZ0"/>
+                            <constraint firstItem="Uaq-3W-WQ3" firstAttribute="centerX" secondItem="Nxl-Ro-n6Q" secondAttribute="centerX" id="x2g-lX-MCI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Nxl-Ro-n6Q" secondAttribute="bottom" constant="236" id="zJj-qa-mIj"/>
+                            <constraint firstItem="bye-A0-Ht1" firstAttribute="centerX" secondItem="Uaq-3W-WQ3" secondAttribute="centerX" id="zZj-8r-c1q"/>
+                            <constraint firstItem="Uaq-3W-WQ3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="zbr-cl-WLM"/>
                         </constraints>
                     </view>
                 </viewController>
