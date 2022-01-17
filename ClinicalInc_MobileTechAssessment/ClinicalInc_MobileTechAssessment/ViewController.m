@@ -12,14 +12,15 @@
 @import GoogleMaps;
 
 @interface ViewController () <CLLocationManagerDelegate>
-@property (weak, nonatomic) IBOutlet GMSMapView *MapView;
+@property (strong, nonatomic) IBOutlet GMSMapView *MapView;
+@property (weak, nonatomic) IBOutlet UILabel *LocationCoordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *LocationNameLabel;
 
 @end
 
 @implementation ViewController {
     CLLocationManager *locationManager;
     CLLocation * _Nullable currentLocation;
-    GMSMapView *MapView;
     GMSPlacesClient *placesClient;
     float preciseLocationZoomLevel;
     float approximateLocationZoomLevel;
@@ -33,6 +34,8 @@
 
   - (void)viewDidLoad {
     [super viewDidLoad];
+
+
     preciseLocationZoomLevel = 15.0;
     approximateLocationZoomLevel = 15.0;
 
@@ -56,22 +59,21 @@
                                                                  zoom:zoomLevel];
       
 
-      NSLog(@"%lu", (unsigned long)self.view.subviews.count);
       for (UIView *view in self.view.subviews) {
-          NSLog(@"%@", view.accessibilityLabel);
           if ([view.accessibilityLabel isEqualToString:@"MapViewView"]) {
-              MapView = [GMSMapView mapWithFrame:view.bounds camera:camera];
+              self.MapView = [GMSMapView mapWithFrame:view.bounds camera:camera];
           }
       }
 
       
-      MapView.settings.myLocationButton = YES;
-      MapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-      MapView.myLocationEnabled = YES;
+      self.MapView.settings.myLocationButton = YES;
+      self.MapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+      self.MapView.myLocationEnabled = YES;
 
     // Add the map to the view, hide it until we've got a location update.
-    [self.view addSubview:MapView];
-      MapView.hidden = YES;
+    [self.view addSubview:self.MapView];
+      
+      self.MapView.hidden = YES;
 
     [self listLikelyPlaces];
   }
@@ -106,14 +108,14 @@
   - (void) unwindToMain:(UIStoryboardSegue *)segue
   {
     // Clear the map.
-    [MapView clear];
+    [self.MapView clear];
 
     // Add a marker to the map.
     if (selectedPlace != nil) {
       GMSMarker *marker = [GMSMarker markerWithPosition:selectedPlace.coordinate];
       marker.title = selectedPlace.name;
       marker.snippet = selectedPlace.formattedAddress;
-      marker.map = MapView;
+      marker.map = self.MapView;
     }
 
     [self listLikelyPlaces];
@@ -143,13 +145,14 @@
     GMSCameraPosition * camera = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
                                                              longitude:location.coordinate.longitude
                                                                   zoom:zoomLevel];
-    
-    if (MapView.isHidden) {
+      [self.LocationCoordLabel setText:[NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:location.coordinate.latitude], [NSNumber numberWithFloat:location.coordinate.longitude]]];
+      
+    if (self.MapView.isHidden) {
 
-        MapView.hidden = NO;
-        MapView.camera = camera;
+        self.MapView.hidden = NO;
+        self.MapView.camera = camera;
     } else {
-      [MapView animateToCameraPosition:camera];
+      [self.MapView animateToCameraPosition:camera];
     }
 
     [self listLikelyPlaces];
@@ -177,7 +180,7 @@
       case kCLAuthorizationStatusDenied:
         NSLog(@"User denied access to location.");
         // Display the map using the default location.
-            MapView.hidden = NO;
+            self.MapView.hidden = NO;
       case kCLAuthorizationStatusNotDetermined:
         NSLog(@"Location status not determined.");
       case kCLAuthorizationStatusAuthorizedAlways:
