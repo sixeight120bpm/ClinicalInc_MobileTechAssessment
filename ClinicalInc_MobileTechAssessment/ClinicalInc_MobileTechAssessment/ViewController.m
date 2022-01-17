@@ -62,6 +62,7 @@
       for (UIView *view in self.view.subviews) {
           if ([view.accessibilityLabel isEqualToString:@"MapViewView"]) {
               self.MapView = [GMSMapView mapWithFrame:view.bounds camera:camera];
+              break;
           }
       }
 
@@ -121,6 +122,8 @@
       marker.title = selectedPlace.name;
       marker.snippet = selectedPlace.formattedAddress;
       marker.map = self.MapView;
+        [self.LocationNameLabel setText:selectedPlace.name];
+        [self.LocationCoordLabel setText:[NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:marker.position.latitude], [NSNumber numberWithFloat:marker.position.longitude]]];
     }
 
     [self listLikelyPlaces];
@@ -150,17 +153,12 @@
     GMSCameraPosition * camera = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
                                                              longitude:location.coordinate.longitude
                                                                   zoom:zoomLevel];
-      
-      
-      
 
-      
       [self.LocationCoordLabel setText:[NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:location.coordinate.latitude], [NSNumber numberWithFloat:location.coordinate.longitude]]];
       
      
       
     if (self.MapView.isHidden) {
-
         self.MapView.hidden = NO;
         self.MapView.camera = camera;
     } else {
