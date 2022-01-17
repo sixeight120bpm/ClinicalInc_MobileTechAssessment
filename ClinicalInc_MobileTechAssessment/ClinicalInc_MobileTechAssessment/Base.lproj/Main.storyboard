@@ -22,11 +22,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLs-T6-GXd" userLabel="MapViewContainer">
+                            <containerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLs-T6-GXd" userLabel="MapViewContainer" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="119" width="414" height="744"/>
-                                <connections>
-                                    <segue destination="ibN-9J-ET3" kind="embed" id="ykV-dO-VsC"/>
-                                </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g52-4D-JHs" userLabel="LocationCoordsLabel">
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
@@ -54,43 +51,12 @@
                     <connections>
                         <outlet property="LocationCoordLabel" destination="g52-4D-JHs" id="nUq-2A-C9P"/>
                         <outlet property="LocationNameLabel" destination="DGU-WN-wKQ" id="2kC-lZ-Mwh"/>
+                        <outlet property="MapView" destination="YLs-T6-GXd" id="DvU-wm-3vx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="97.767857142857139"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ePn-nS-beW">
-            <objects>
-                <viewController id="ibN-9J-ET3" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="t61-fE-ALy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="744"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzg-jT-xYV" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="744"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <accessibility key="accessibilityConfiguration" label="MapViewView">
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="gzg-jT-xYV" firstAttribute="centerY" secondItem="t61-fE-ALy" secondAttribute="centerY" id="3FM-7i-nIC"/>
-                            <constraint firstItem="gzg-jT-xYV" firstAttribute="leading" secondItem="t61-fE-ALy" secondAttribute="leadingMargin" constant="-20" id="5yC-En-xc3"/>
-                            <constraint firstItem="gzg-jT-xYV" firstAttribute="bottom" secondItem="t61-fE-ALy" secondAttribute="bottomMargin" id="Jzu-gm-n8k"/>
-                            <constraint firstItem="gzg-jT-xYV" firstAttribute="centerX" secondItem="t61-fE-ALy" secondAttribute="centerX" id="LAn-Jk-Mpl"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="MapView" destination="gzg-jT-xYV" id="HL2-9x-jhS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NmI-86-gl3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-617" y="263"/>
         </scene>
     </scenes>
     <resources>
