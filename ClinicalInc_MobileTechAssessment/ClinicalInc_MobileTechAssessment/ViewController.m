@@ -15,6 +15,9 @@
 @property (strong, nonatomic) IBOutlet GMSMapView *MapView;
 @property (weak, nonatomic) IBOutlet UILabel *LocationCoordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LocationNameLabel;
+@property (weak, nonatomic) IBOutlet UISlider *ZoomValue;
+
+- (IBAction)ZoomValueChanged:(id)sender;
 
 @end
 
@@ -49,6 +52,9 @@
 
   //  placesClient = [GMSPlacesClient sharedClient];
 
+      
+      //hold off on setting up map view until we have permission
+      
     // A default location to use when location permission is not granted.
     CLLocationCoordinate2D defaultLocation = CLLocationCoordinate2DMake(-33.869405, 151.199);
     
@@ -57,14 +63,16 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:defaultLocation.latitude
                                                             longitude:defaultLocation.longitude
                                                                  zoom:zoomLevel];
-      
+      [self.ZoomValue setValue:zoomLevel];
 
-      for (UIView *view in self.view.subviews) {
-          if ([view.accessibilityLabel isEqualToString:@"MapViewView"]) {
-              self.MapView = [GMSMapView mapWithFrame:view.bounds camera:camera];
-              break;
-          }
-      }
+      //this should not work
+//      for (UIView *view in self.view.subviews) {
+//          if ([view.accessibilityLabel isEqualToString:@"MapViewView"]) {
+//              self.MapView = [GMSMapView mapWithFrame:view.bounds camera:camera];
+//              break;
+//          }
+//      }
+      //view is kind of class MapViewView
 
       
       self.MapView.settings.myLocationButton = YES;
@@ -72,10 +80,13 @@
       self.MapView.myLocationEnabled = YES;
 
     // Add the map to the view, hide it until we've got a location update.
-    [self.view addSubview:self.MapView];
+    //[self.view addSubview:self.MapView];
       
       self.MapView.hidden = YES;
 
+      //https://developers.google.com/maps/documentation/ios-sdk/events implement camera location change event, update labels accordingly
+      //make sure labels are updated on reset
+      //
 //    [self listLikelyPlaces];
   }
 
@@ -186,11 +197,14 @@
         NSLog(@"User denied access to location.");
         // Display the map using the default location.
             self.MapView.hidden = NO;
+            break;
       case kCLAuthorizationStatusNotDetermined:
         NSLog(@"Location status not determined.");
+            break;
       case kCLAuthorizationStatusAuthorizedAlways:
       case kCLAuthorizationStatusAuthorizedWhenInUse:
         NSLog(@"Location status is OK.");
+            break;
     }
   }
 
@@ -201,4 +215,8 @@
     NSLog(@"Error: %@", error.localizedDescription);
   }
 
-  @end
+- (IBAction)ZoomValueChanged:(id)sender {
+    [self.MapView animateToZoom:self.ZoomValue.value];
+    
+}
+@end
