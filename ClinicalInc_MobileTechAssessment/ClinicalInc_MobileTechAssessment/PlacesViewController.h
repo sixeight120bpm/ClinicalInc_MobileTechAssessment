@@ -11,9 +11,6 @@
 @import GooglePlaces;
 @import GoogleMaps;
 
-#ifndef PlacesViewController_h
-#define PlacesViewController_h
-
 @interface PlacesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) NSMutableArray<GMSPlace *> * _Nullable likelyPlaces;
 @property (weak, nonatomic) GMSPlace * _Nullable selectedPlace;
@@ -24,4 +21,3 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
-#endif /* PlacesViewController_h */

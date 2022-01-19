@@ -7,18 +7,19 @@
 
 #import "AppDelegate.h"
 @import GoogleMaps;
-@import GooglePlaces;
+//@import GooglePlaces;
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
+//implement core location service here?
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [GMSPlacesClient provideAPIKey: @"AIzaSyD2kiSBXUlM0v-ByN9Aeaf0zIjv3CW7Fsg"];
-    [GMSServices provideAPIKey: @"AIzaSyD2kiSBXUlM0v-ByN9Aeaf0zIjv3CW7Fsg"];
+    [GMSServices provideAPIKey:@"AIzaSyD2kiSBXUlM0v-ByN9Aeaf0zIjv3CW7Fsg"];
+//    [GMSPlacesClient provideAPIKey:@"AIzaSyD2kiSBXUlM0v-ByN9Aeaf0zIjv3CW7Fsg"];
+    //self.window.rootViewController <- pass location manager
     
     return YES;
 }

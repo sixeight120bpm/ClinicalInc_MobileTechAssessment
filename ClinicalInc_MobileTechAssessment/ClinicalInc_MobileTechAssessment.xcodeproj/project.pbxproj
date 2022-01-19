@@ -20,7 +20,7 @@
 		F20EB16A277A687C001DB926 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20EB169277A687C001DB926 /* GoogleMapsBase.framework */; };
 		F20EB16C277A6887001DB926 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20EB16B277A6887001DB926 /* GoogleMaps.framework */; };
 		F20EB16E277A6894001DB926 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20EB16D277A6894001DB926 /* GoogleMapsCore.framework */; };
-		F2388CA72793757E00D31892 /* CurrentLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F2388CA62793757E00D31892 /* CurrentLocation.gpx */; };
+		F2388CAF2793823800D31892 /* CurrentLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F2388CAE2793823800D31892 /* CurrentLocation.gpx */; };
 		F2A14F3F279330CD003A448B /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A14F3E279330CC003A448B /* PlacesViewController.m */; };
 		F2A14F4227934F4C003A448B /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A14F4127934F4C003A448B /* GooglePlaces.framework */; };
 		F2A14F4427934F87003A448B /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F2A14F4327934F87003A448B /* GooglePlaces.bundle */; };
@@ -81,7 +81,7 @@
 		F20EB169277A687C001DB926 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
 		F20EB16B277A6887001DB926 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		F20EB16D277A6894001DB926 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
-		F2388CA62793757E00D31892 /* CurrentLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CurrentLocation.gpx; sourceTree = "<group>"; };
+		F2388CAE2793823800D31892 /* CurrentLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CurrentLocation.gpx; sourceTree = "<group>"; };
 		F2A14F3E279330CC003A448B /* PlacesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
 		F2A14F40279330FF003A448B /* PlacesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
 		F2A14F4127934F4C003A448B /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = "<group>"; };
@@ -194,6 +194,7 @@
 				F2388CA62793757E00D31892 /* CurrentLocation.gpx */,
 				F2A14F3E279330CC003A448B /* PlacesViewController.m */,
 				F2A14F40279330FF003A448B /* PlacesViewController.h */,
+				F2388CAE2793823800D31892 /* CurrentLocation.gpx */,
 			);
 			path = ClinicalInc_MobileTechAssessment;
 			sourceTree = "<group>";
@@ -346,6 +347,7 @@
 				F20EB13B277A37D1001DB926 /* Assets.xcassets in Resources */,
 				F20EB139277A37CF001DB926 /* Main.storyboard in Resources */,
 				F2FD10F8277CD8E30038DEC9 /* GoogleMaps.bundle in Resources */,
+				F2388CAF2793823800D31892 /* CurrentLocation.gpx in Resources */,
 				F2A14F4427934F87003A448B /* GooglePlaces.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

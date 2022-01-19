@@ -21,7 +21,6 @@
 @implementation PlacesViewController {
   // Cell reuse id (cells that scroll out of view can be reused).
   NSString *cellReuseIdentifier;
-
 }
 
 - (void)viewDidLoad {
