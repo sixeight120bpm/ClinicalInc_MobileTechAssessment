@@ -37,6 +37,14 @@
                                     <action selector="ZoomValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="X76-tD-pXB"/>
                                 </connections>
                             </slider>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6K-6V-tI0">
+                                <rect key="frame" x="0.0" y="119" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="UN4-Ie-2mN"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -58,6 +66,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AddressSearch" destination="p6K-6V-tI0" id="yZm-Bu-PYf"/>
                         <outlet property="LocationCoordLabel" destination="g52-4D-JHs" id="nUq-2A-C9P"/>
                         <outlet property="LocationNameLabel" destination="DGU-WN-wKQ" id="2kC-lZ-Mwh"/>
                         <outlet property="MapView" destination="YLs-T6-GXd" id="DvU-wm-3vx"/>

@@ -9,11 +9,12 @@
 @import CoreLocation;
 @import GoogleMaps;
 
-@interface ViewController () <CLLocationManagerDelegate, GMSMapViewDelegate>
+@interface ViewController () <CLLocationManagerDelegate, GMSMapViewDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) IBOutlet GMSMapView *MapView;
 @property (weak, nonatomic) IBOutlet UILabel *LocationCoordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LocationNameLabel;
 @property (weak, nonatomic) IBOutlet UISlider *ZoomValue;
+@property (weak, nonatomic) IBOutlet UISearchBar *AddressSearch;
 
 - (IBAction)ZoomValueChanged:(id)sender;
 
@@ -23,7 +24,6 @@
     CLLocationManager *locationManager;
     CLLocation * _Nullable currentLocation;
     float defaultZoomLevel;
-    GMSGeocoder *geocoder;
 }
 
 - (void)viewDidLoad {
@@ -81,8 +81,17 @@
         }
     }];
 }
+
+-(void)getLocationCoordsFromAddress:(NSString *)address{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            [self.MapView setCamera:[self updateCamera:placemark.location.coordinate]];
+            
+        }];
+}
+
 -(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(nonnull GMSCameraPosition *)position{
-    NSLog(@"Camera Idle At @%", position.target);
     [self updateLabelText:position.target];
 }
 
@@ -115,15 +124,20 @@
     }
   }
 
-  // Handle location manager errors.
-  - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-  {
+// Handle location manager errors.
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
     [manager stopUpdatingLocation];
     NSLog(@"Error: %@", error.localizedDescription);
-  }
+}
 
 - (IBAction)ZoomValueChanged:(id)sender {
     [self.MapView animateToZoom:self.ZoomValue.value];
     
 }
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [self getLocationCoordsFromAddress:searchBar.text];
+    [searchBar resignFirstResponder];
+}
+
 @end
