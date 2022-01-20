@@ -9,7 +9,7 @@
 @import CoreLocation;
 @import GoogleMaps;
 
-@interface ViewController () <CLLocationManagerDelegate>
+@interface ViewController () <CLLocationManagerDelegate, GMSMapViewDelegate>
 @property (strong, nonatomic) IBOutlet GMSMapView *MapView;
 @property (weak, nonatomic) IBOutlet UILabel *LocationCoordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LocationNameLabel;
@@ -23,6 +23,7 @@
     CLLocationManager *locationManager;
     CLLocation * _Nullable currentLocation;
     float defaultZoomLevel;
+    GMSGeocoder *geocoder;
 }
 
 - (void)viewDidLoad {
@@ -39,11 +40,8 @@
 
     //set initial zoom level
     [self.ZoomValue setValue:defaultZoomLevel];
-    
     //set up initial map view
-
-    self.MapView = [GMSMapView mapWithFrame:self.view.bounds camera:[self updateCamera:CLLocationCoordinate2DMake(-33.869405, 151.199)]];
-    
+    self.MapView.delegate = self;
     self.MapView.settings.myLocationButton = YES;
     self.MapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.MapView.myLocationEnabled = YES;
@@ -60,6 +58,7 @@
 {
     CLLocation *location = locations.lastObject;
     NSLog(@"Location: %@", location);
+
     GMSCameraPosition *camera = [self updateCamera:location.coordinate];
     self.MapView.camera = camera;
     [self.MapView animateToCameraPosition:camera];
@@ -67,6 +66,24 @@
 
 -(void)updateLabelText:(CLLocationCoordinate2D)coordinates{
     [self.LocationCoordLabel setText:[NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:coordinates.latitude], [NSNumber numberWithFloat:coordinates.longitude]]];
+    [self getLocationAddress:coordinates];
+}
+
+
+-(void)getLocationAddress:(CLLocationCoordinate2D)coordinates{
+    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:coordinates completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
+        NSLog(@"reverse geocoding results:");
+        for(GMSAddress* addressObj in [response results]){
+            if (addressObj.thoroughfare != NULL) {
+                [self.LocationNameLabel setText:[NSString stringWithFormat:@"%@, %@, %@, %@", addressObj.thoroughfare, addressObj.locality, addressObj.administrativeArea, addressObj.postalCode]];
+                break;
+            }
+        }
+    }];
+}
+-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(nonnull GMSCameraPosition *)position{
+    NSLog(@"Camera Idle At @%", position.target);
+    [self updateLabelText:position.target];
 }
 
 -(void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager
