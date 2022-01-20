@@ -24,6 +24,9 @@
                             </label>
                             <containerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLs-T6-GXd" userLabel="MapViewContainer" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="119" width="414" height="635"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="V17-6k-SRx"/>
+                                </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g52-4D-JHs" userLabel="LocationCoordsLabel">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
@@ -31,12 +34,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="ln7-1e-UQG">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="ln7-1e-UQG">
                                 <rect key="frame" x="20" y="777" width="376" height="30"/>
                                 <connections>
                                     <action selector="ZoomValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="X76-tD-pXB"/>
                                 </connections>
                             </slider>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6K-6V-tI0">
+                                <rect key="frame" x="0.0" y="119" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="UN4-Ie-2mN"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -58,6 +69,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AddressSearch" destination="p6K-6V-tI0" id="yZm-Bu-PYf"/>
                         <outlet property="LocationCoordLabel" destination="g52-4D-JHs" id="nUq-2A-C9P"/>
                         <outlet property="LocationNameLabel" destination="DGU-WN-wKQ" id="2kC-lZ-Mwh"/>
                         <outlet property="MapView" destination="YLs-T6-GXd" id="DvU-wm-3vx"/>
