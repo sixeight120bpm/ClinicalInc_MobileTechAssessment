@@ -8,6 +8,7 @@
 #import "ViewController.h"
 @import CoreLocation;
 @import GoogleMaps;
+@import MapKit;
 
 @interface ViewController () <CLLocationManagerDelegate, GMSMapViewDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) IBOutlet GMSMapView *MapView;
@@ -15,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *LocationNameLabel;
 @property (weak, nonatomic) IBOutlet UISlider *ZoomValue;
 @property (weak, nonatomic) IBOutlet UISearchBar *AddressSearch;
-
 - (IBAction)ZoomValueChanged:(id)sender;
 
 @end
@@ -23,56 +23,52 @@
 @implementation ViewController {
     CLLocationManager *locationManager;
     CLLocation * _Nullable currentLocation;
-    float defaultZoomLevel;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    defaultZoomLevel = 15.0;
+    [self configureLocationManager];
+    [self configureMapView];
+}
 
-    // Initialize the location manager.
+-(void)configureLocationManager{
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager requestWhenInUseAuthorization];
     locationManager.distanceFilter = 50;
-    [locationManager startUpdatingLocation];
     locationManager.delegate = self;
+}
 
-    //set initial zoom level
-    [self.ZoomValue setValue:defaultZoomLevel];
-    //set up initial map view
+-(void)configureMapView{
     self.MapView.delegate = self;
     self.MapView.settings.myLocationButton = YES;
     self.MapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.MapView.myLocationEnabled = YES;
-    
 }
 
--(GMSCameraPosition*)updateCamera:(CLLocationCoordinate2D)coordinates{
+-(void)updateCamera:(CLLocationCoordinate2D)coordinates{
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinates.latitude longitude:coordinates.longitude zoom:self.ZoomValue.value];
-    NSLog(@"CAMERA UPDATE!%@", camera);
-    return camera;
+    self.MapView.camera = camera;
+    [self.MapView animateToCameraPosition:camera];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
     CLLocation *location = locations.lastObject;
-    NSLog(@"Location: %@", location);
-
-    GMSCameraPosition *camera = [self updateCamera:location.coordinate];
-    self.MapView.camera = camera;
-    [self.MapView animateToCameraPosition:camera];
+    [self updateCamera:location.coordinate];
 }
 
 -(void)updateLabelText:(CLLocationCoordinate2D)coordinates{
-    [self.LocationCoordLabel setText:[NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:coordinates.latitude], [NSNumber numberWithFloat:coordinates.longitude]]];
+    [self.LocationCoordLabel setText: [self formatCoordinateString:coordinates]];
     [self getLocationAddress:coordinates];
 }
 
+-(NSString*)formatCoordinateString:(CLLocationCoordinate2D)coordinates{
+    return [NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:coordinates.latitude], [NSNumber numberWithFloat:coordinates.longitude]];
+}
 
 -(void)getLocationAddress:(CLLocationCoordinate2D)coordinates{
     [[GMSGeocoder geocoder] reverseGeocodeCoordinate:coordinates completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
-        NSLog(@"reverse geocoding results:");
         for(GMSAddress* addressObj in [response results]){
             if (addressObj.thoroughfare != NULL) {
                 [self.LocationNameLabel setText:[NSString stringWithFormat:@"%@, %@, %@, %@", addressObj.thoroughfare, addressObj.locality, addressObj.administrativeArea, addressObj.postalCode]];
@@ -86,8 +82,7 @@
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
         [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
             CLPlacemark *placemark = [placemarks objectAtIndex:0];
-            [self.MapView setCamera:[self updateCamera:placemark.location.coordinate]];
-            
+            [self updateCamera:placemark.location.coordinate];
         }];
 }
 
@@ -119,10 +114,10 @@
       case kCLAuthorizationStatusAuthorizedAlways:
       case kCLAuthorizationStatusAuthorizedWhenInUse:
         NSLog(@"Location status is OK.");
-
+            [locationManager startUpdatingLocation];
             break;
     }
-  }
+}
 
 // Handle location manager errors.
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -135,9 +130,9 @@
     [self.MapView animateToZoom:self.ZoomValue.value];
     
 }
+
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self getLocationCoordsFromAddress:searchBar.text];
     [searchBar resignFirstResponder];
 }
-
 @end
