@@ -69,7 +69,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AddressSearch" destination="p6K-6V-tI0" id="yZm-Bu-PYf"/>
+                        <outlet property="AddressSearch" destination="p6K-6V-tI0" id="Rqi-Nd-elN"/>
                         <outlet property="LocationCoordLabel" destination="g52-4D-JHs" id="nUq-2A-C9P"/>
                         <outlet property="LocationNameLabel" destination="DGU-WN-wKQ" id="2kC-lZ-Mwh"/>
                         <outlet property="MapView" destination="YLs-T6-GXd" id="DvU-wm-3vx"/>

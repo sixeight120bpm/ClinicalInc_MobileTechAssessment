@@ -10,7 +10,7 @@
 @import GoogleMaps;
 @import MapKit;
 
-@interface ViewController () <CLLocationManagerDelegate, GMSMapViewDelegate, UISearchBarDelegate>
+@interface ViewController () <CLLocationManagerDelegate, GMSMapViewDelegate, UISearchBarDelegate, MKLocalSearchCompleterDelegate>
 @property (strong, nonatomic) IBOutlet GMSMapView *MapView;
 @property (weak, nonatomic) IBOutlet UILabel *LocationCoordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LocationNameLabel;
@@ -23,12 +23,15 @@
 @implementation ViewController {
     CLLocationManager *locationManager;
     CLLocation * _Nullable currentLocation;
+    MKLocalSearchCompleter *searchCompleter;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureLocationManager];
     [self configureMapView];
+    searchCompleter = [[MKLocalSearchCompleter alloc]init];
+    searchCompleter.delegate = self;
 }
 
 -(void)configureLocationManager{
@@ -56,6 +59,7 @@
 {
     CLLocation *location = locations.lastObject;
     [self updateCamera:location.coordinate];
+    searchCompleter.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.5,0.5));
 }
 
 -(void)updateLabelText:(CLLocationCoordinate2D)coordinates{
@@ -128,11 +132,18 @@
 
 - (IBAction)ZoomValueChanged:(id)sender {
     [self.MapView animateToZoom:self.ZoomValue.value];
-    
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self getLocationCoordsFromAddress:searchBar.text];
     [searchBar resignFirstResponder];
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    searchCompleter.queryFragment = searchText;
+}
+
+-(void)completerDidUpdateResults:(MKLocalSearchCompleter *)completer{
+    NSLog(@"%@", completer.results);
 }
 @end
