@@ -5,6 +5,16 @@
 //  Created by user206074 on 12/27/21.
 //
 
+//Todo/post project thoughts:
+//- this is NOT a single responsibility class and it should be.
+//- Ideally, there would be seperate controllers for managing the map view, geocoding, location manager, and the search bar +search completer.
+//  - Currently there is still more dependence between areas that I would like.
+//  - Labels don't need to know about geocoding, geocoding doesn't need to know about the view. I'm relying on delegate actions to trigger changes instead of setting up my own events.
+//- No tests. It's a very thin layer, I'm not doing anything with the data, no transformation, there's not really anything to test in terms of the model.
+//  - API testing doesn't really falling in unit testing, since it relies on outside services.
+//    - Maybe that's still wporth testing for documentation and to confirm I'm pulling the data I think I'm pulling?
+//  - UITesting would be worthwhile and I could have benefitted from learning more about that.
+//- No optonal requirements. I ran into time constraints and chose not to pursue those, but they would be worthwhile as a learning exercise.
 #import "ViewController.h"
 @import CoreLocation;
 @import GoogleMaps;
@@ -32,19 +42,40 @@
     [super viewDidLoad];
     [self configureLocationManager];
     [self configureMapView];
-    searchCompleter = [[MKLocalSearchCompleter alloc]init];
-    searchCompleter.delegate = self;
-    searchCompleterResults = [[NSMutableArray alloc]init];
+    [self configureSearchCompleter];
 }
 
--(void)configureLocationManager{
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager requestWhenInUseAuthorization];
-    locationManager.distanceFilter = 50;
-    locationManager.delegate = self;
+#pragma mark Label Management
+-(void)updateLabelText:(CLLocationCoordinate2D)coordinates{
+    [self.LocationCoordLabel setText: [self formatCoordinateString:coordinates]];
+    [self getLocationAddressFromCoordinates:coordinates];
 }
 
+-(NSString*)formatCoordinateString:(CLLocationCoordinate2D)coordinates{
+    return [NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:coordinates.latitude], [NSNumber numberWithFloat:coordinates.longitude]];
+}
+
+#pragma mark Geocoding
+-(void)getLocationAddressFromCoordinates:(CLLocationCoordinate2D)coordinates{
+    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:coordinates completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
+        for(GMSAddress* addressObj in [response results]){
+            if (addressObj.thoroughfare != NULL) {
+                [self.LocationNameLabel setText:[NSString stringWithFormat:@"%@, %@, %@, %@", addressObj.thoroughfare, addressObj.locality, addressObj.administrativeArea, addressObj.postalCode]];
+                break;
+            }
+        }
+    }];
+}
+
+-(void)getLocationCoordinatesFromAddress:(NSString *)address{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            [self updateCamera:placemark.location.coordinate];
+        }];
+}
+
+#pragma mark Map View management
 -(void)configureMapView{
     self.MapView.delegate = self;
     self.MapView.settings.myLocationButton = YES;
@@ -58,43 +89,25 @@
     [self.MapView animateToCameraPosition:camera];
 }
 
+#pragma mark Map View Delegate
+-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(nonnull GMSCameraPosition *)position{
+    [self updateLabelText:position.target];
+}
+
+#pragma mark Locaton Manager
+-(void)configureLocationManager{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager requestWhenInUseAuthorization];
+    locationManager.distanceFilter = 50;
+    locationManager.delegate = self;
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
     CLLocation *location = locations.lastObject;
     [self updateCamera:location.coordinate];
     searchCompleter.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.5,0.5));
-}
-
--(void)updateLabelText:(CLLocationCoordinate2D)coordinates{
-    [self.LocationCoordLabel setText: [self formatCoordinateString:coordinates]];
-    [self getLocationAddress:coordinates];
-}
-
--(NSString*)formatCoordinateString:(CLLocationCoordinate2D)coordinates{
-    return [NSString stringWithFormat:@"Current Location: (%@, %@)", [NSNumber numberWithFloat:coordinates.latitude], [NSNumber numberWithFloat:coordinates.longitude]];
-}
-
--(void)getLocationAddress:(CLLocationCoordinate2D)coordinates{
-    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:coordinates completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
-        for(GMSAddress* addressObj in [response results]){
-            if (addressObj.thoroughfare != NULL) {
-                [self.LocationNameLabel setText:[NSString stringWithFormat:@"%@, %@, %@, %@", addressObj.thoroughfare, addressObj.locality, addressObj.administrativeArea, addressObj.postalCode]];
-                break;
-            }
-        }
-    }];
-}
-
--(void)getLocationCoordsFromAddress:(NSString *)address{
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-        [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
-            CLPlacemark *placemark = [placemarks objectAtIndex:0];
-            [self updateCamera:placemark.location.coordinate];
-        }];
-}
-
--(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(nonnull GMSCameraPosition *)position{
-    [self updateLabelText:position.target];
 }
 
 -(void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager
@@ -133,12 +146,14 @@
     NSLog(@"Error: %@", error.localizedDescription);
 }
 
+#pragma mark - Zoom slider action
 - (IBAction)ZoomValueChanged:(id)sender {
     [self.MapView animateToZoom:self.ZoomValue.value];
 }
 
+#pragma mark - Search Bar Delegate
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [self getLocationCoordsFromAddress:searchBar.text];
+    [self getLocationCoordinatesFromAddress:searchBar.text];
     [searchBar resignFirstResponder];
     self.TableViewOutlet.hidden = YES;
     [self.AddressSearch setText:@""];
@@ -146,6 +161,13 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     searchCompleter.queryFragment = searchText;
+}
+
+#pragma mark Search Completer
+-(void)configureSearchCompleter{
+    searchCompleter = [[MKLocalSearchCompleter alloc]init];
+    searchCompleter.delegate = self;
+    searchCompleterResults = [[NSMutableArray alloc]init];
 }
 
 -(void)completerDidUpdateResults:(MKLocalSearchCompleter *)completer{
@@ -182,27 +204,22 @@
     return cell;
 }
 
-// Default is 1 if not implemented
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:
 (NSInteger)section{
     return @"Results";
 }
+
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:
 (NSInteger)section{
     return @"";
 }
 
 #pragma mark - TableView delegate
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:
 (NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [self getLocationCoordsFromAddress:cell.textLabel.text];
+    [self getLocationCoordinatesFromAddress:cell.textLabel.text];
     [self.AddressSearch resignFirstResponder];
     self.TableViewOutlet.hidden = YES;
     [self.AddressSearch setText:@""];
