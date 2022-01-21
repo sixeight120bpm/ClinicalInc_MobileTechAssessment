@@ -15,6 +15,7 @@
 //    - Maybe that's still wporth testing for documentation and to confirm I'm pulling the data I think I'm pulling?
 //  - UITesting would be worthwhile and I could have benefitted from learning more about that.
 //- No optonal requirements. I ran into time constraints and chose not to pursue those, but they would be worthwhile as a learning exercise.
+//- I left the API key visible in almost all of the commit history. I'm not sure how to hide it. This is something I hadn't considered, but now realize is very important when working with API keys. I will need to seek guidance on the best way to handle that.
 #import "ViewController.h"
 @import CoreLocation;
 @import GoogleMaps;
