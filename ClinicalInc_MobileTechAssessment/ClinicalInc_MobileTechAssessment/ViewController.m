@@ -5,6 +5,16 @@
 //  Created by user206074 on 12/27/21.
 //
 
+//Todo/post project thoughts:
+//- this is NOT a single responsibility class and it should be.
+//- Ideally, there would be seperate controllers for managing the map view, geocoding, location manager, and the search bar +search completer.
+//  - Currently there is still more dependence between areas that I would like.
+//  - Labels don't need to know about geocoding, geocoding doesn't need to know about the view. I'm relying on delegate actions to trigger changes instead of setting up my own events.
+//- No tests. It's a very thin layer, I'm not doing anything with the data, no transformation, there's not really anything to test in terms of the model.
+//  - API testing doesn't really falling in unit testing, since it relies on outside services.
+//    - Maybe that's still wporth testing for documentation and to confirm I'm pulling the data I think I'm pulling?
+//  - UITesting would be worthwhile and I could have benefitted from learning more about that.
+//- No optonal requirements. I ran into time constraints and chose not to pursue those, but they would be worthwhile as a learning exercise.
 #import "ViewController.h"
 @import CoreLocation;
 @import GoogleMaps;
